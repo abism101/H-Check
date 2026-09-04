@@ -1,0 +1,347 @@
+# H-Check v1.1 now available!
+
+### System Information & Diagnostics Tool
+
+**H-Check** is a lightweight Python command-line utility designed to collect detailed information about a Linux system and provide a practical overview of its current state.
+
+It combines **system information, hardware details, storage, network configuration, processes, services, security checks and overall system health** into a single terminal-based report.
+
+> Built for IT diagnostics, system administration and everyday troubleshooting.
+
+---
+
+## ✨ Features
+
+* 🖥️ Detailed system information
+* ⚙️ CPU, RAM, GPU and motherboard detection
+* 💾 Storage devices and filesystem usage
+* 🌐 Network interfaces, gateway, DNS and connectivity
+* 📊 Running process overview
+* 🔧 System service status
+* 🔐 Basic security auditing
+* ❤️ Overall system health checks
+* ⚠️ Warning and critical issue detection
+* 📋 Final system summary
+* 📦 JSON report output
+* 🐧 Linux-first design
+* 🚫 No external Python dependencies
+
+---
+
+## 🔍 Modules
+
+### System
+
+Displays information about:
+
+* Hostname
+* Operating system
+* Distribution
+* Kernel
+* Architecture
+* CPU information
+* Python version
+* Uptime
+* Boot time
+* Current user
+* Logged-in users
+* Shell
+* Desktop environment
+* Virtualization
+* Timezone
+
+### Hardware
+
+Provides detailed hardware information:
+
+* CPU model
+* CPU threads
+* Frequency
+* RAM usage
+* Total / used / available memory
+* GPU detection
+* Motherboard
+* BIOS / UEFI
+
+### Storage
+
+Analyzes:
+
+* Physical storage devices
+* Device model
+* Capacity
+* Filesystems
+* Used space
+* Free space
+* Storage utilization
+* High-usage warnings
+
+### Network
+
+Checks:
+
+* Network interfaces
+* Interface state
+* MAC addresses
+* IPv4 / IPv6
+* Default gateway
+* DNS servers
+* Gateway connectivity
+* Internet connectivity
+* DNS resolution
+* Basic latency
+
+### Processes
+
+Displays the most resource-intensive processes based on:
+
+* PID
+* User
+* CPU usage
+* Memory usage
+* Process name
+
+### Services
+
+Provides an overview of system services:
+
+* Running services
+* Stopped services
+* Failed services
+* Service summary
+
+### Security
+
+Performs basic local security checks including:
+
+* Firewall status
+* SSH configuration
+* SSH service state
+* Root login configuration
+* Password authentication configuration
+* Failed authentication attempts
+* Secure Boot status
+
+### Health
+
+Evaluates the overall system condition by checking:
+
+* RAM usage
+* Storage usage
+* Network connectivity
+* Failed services
+* Authentication activity
+
+Results are classified as:
+
+```text
+✓ NORMAL
+⚠ WARNING
+✗ CRITICAL
+```
+
+---
+
+## 🚀 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/h-check.git
+cd h-check
+```
+
+Make the script executable:
+
+```bash
+chmod +x hcheck.py
+```
+
+Run H-Check:
+
+```bash
+./hcheck.py
+```
+
+Python 3 is required.
+
+---
+
+## 💻 Usage
+
+### Full diagnostic report
+
+```bash
+python3 hcheck.py
+```
+
+Runs the complete system diagnostic.
+
+### Individual modules
+
+```bash
+python3 hcheck.py --system
+python3 hcheck.py --hardware
+python3 hcheck.py --storage
+python3 hcheck.py --network
+python3 hcheck.py --processes
+python3 hcheck.py --services
+python3 hcheck.py --security
+python3 hcheck.py --health
+```
+
+### Run everything explicitly
+
+```bash
+python3 hcheck.py --all
+```
+
+### JSON output
+
+```bash
+python3 hcheck.py --json
+```
+
+JSON output can be useful for automation, external scripts and future integrations.
+
+### Version
+
+```bash
+python3 hcheck.py --version
+```
+
+---
+
+## 📋 Example
+
+```text
+╔══════════════════════════════════════════════════════════════╗
+║                         H-CHECK                              ║
+║              SYSTEM INFORMATION & DIAGNOSTICS               ║
+║                         v1.1.0                               ║
+╚══════════════════════════════════════════════════════════════╝
+
+[ SYSTEM ]
+──────────────────────────────────────────────────────────────
+Hostname              : workstation
+Operating System      : Linux
+Kernel                : 6.x
+Architecture          : x86_64
+Uptime                : 2d 14h 32m
+Current user          : user
+
+[ HARDWARE ]
+──────────────────────────────────────────────────────────────
+CPU Model             : Intel Core i7
+Threads               : 12
+RAM                   : 32 GB
+RAM Usage             : 41%
+GPU 1                 : AMD Radeon RX 580
+
+[ STORAGE ]
+──────────────────────────────────────────────────────────────
+/                     : 71% used
+
+[ NETWORK ]
+──────────────────────────────────────────────────────────────
+Interface             : eth0
+IPv4                  : 192.168.1.25
+Gateway               : 192.168.1.1
+Internet              : Online
+DNS                   : Working
+
+[ SERVICES ]
+──────────────────────────────────────────────────────────────
+Running               : 18
+Stopped               : 6
+Failed                : 0
+
+[ SECURITY ]
+──────────────────────────────────────────────────────────────
+Firewall              : Enabled
+Root login            : Restricted
+Failed logins (24h)   : 2
+Secure Boot           : Enabled
+
+[ SYSTEM HEALTH ]
+──────────────────────────────────────────────────────────────
+RAM                   : ✓ Normal
+Storage               : ✓ Normal
+Network               : ✓ Normal
+Services              : ✓ Normal
+Authentication        : ✓ Normal
+
+[ SUMMARY ]
+──────────────────────────────────────────────────────────────
+Critical issues       : 0
+Warnings              : 0
+
+SYSTEM STATUS          : ✓ HEALTHY
+```
+
+---
+
+## 🛠️ Requirements
+
+* Python **3.9+**
+* Linux
+* Standard Python library
+
+Some diagnostic features depend on common Linux utilities such as:
+
+```text
+ip
+lsblk
+lspci
+systemctl
+journalctl
+ping
+```
+
+Certain information may require elevated privileges depending on the system configuration.
+
+---
+
+## 🎯 Project Goals
+
+H-Check is designed to be useful for:
+
+* IT troubleshooting
+* Linux system administration
+* Hardware inspection
+* Server diagnostics
+* Network troubleshooting
+* Basic security auditing
+* Homelab environments
+* Learning Python and Linux internals
+
+The project focuses on keeping the interface **simple, readable and practical** while providing as much useful diagnostic information as possible.
+
+---
+
+## ⚠️ Disclaimer
+
+H-Check is intended for **legitimate administration, diagnostics and authorized testing** of systems you own or are allowed to manage.
+
+Some checks may require administrator/root privileges.
+
+---
+
+## 📌 Roadmap
+
+Planned improvements:
+
+* Windows support
+* Better hardware temperature detection
+* SMART disk health
+* Package/update checks
+* More security checks
+* More detailed network diagnostics
+* Improved health scoring
+* Report export
+* Configuration diffing
+* Additional server diagnostics
+
+---
+
+
